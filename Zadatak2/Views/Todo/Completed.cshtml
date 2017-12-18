@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata
+@using Zadatak2.Views.Todo
+@model List<Zadatak2.Models.TodoViewModel>
+@{
+}
+
+<html>
+<head>
+
+</head>
+<body>
+<h1>Completed Todos</h1>
+@if (Model != null)
+{
+    foreach (var compleated in Model)
+    {
+        var forRender = Html.Partial("_PartialTodo", compleated, new ViewDataDictionary(this.ViewData) { { "rok", false }, { "funkcija", compleated.DateCompleted.ToString("D") }, { "link", "Remove" } });
+        @forRender
+
+        //Html.RenderPartial("_PartialTodo", active);
+
+    }
+
+
+    /*
+    foreach (var todoView in Model)
+    {
+        <p>
+            <br />
+            <b>@todoView.Text </b> &nbsp;<span style="color: red"> @todoView.GetDaysLeft() </span> <br/>
+            @todoView.DateDue <br/>
+            Mark as Completed
+
+        </p>
+
+    */
+}
+
+
+
+
+<a asp-action="Index">Return</a>
+
+
+</body>
+</html>

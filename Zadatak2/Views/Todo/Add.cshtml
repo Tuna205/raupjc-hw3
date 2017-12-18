@@ -1,0 +1,22 @@
+﻿@using Zadatak2.Views.Todo
+@model Zadatak2.Models.AddTodoViewModel
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Todo</title>
+</head>
+<body>
+<div>
+    <form asp-action="Add" method="post">
+        <br/>
+        Todo Text: <input asp-for="Text"/><span asp-validation-for="Text"></span> <br/>
+        Rok: <input asp-for="DateDue"/> <br/>
+        Labele odvojene zarezom <input asp-for="Labele"/> <br/>
+        <input type="submit"/> <br/>
+        <br/>
+    </form>
+</div>
+<a asp-action="Index">Return</a>
+</body>

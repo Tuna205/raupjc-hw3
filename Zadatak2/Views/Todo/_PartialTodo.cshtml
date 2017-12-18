@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNetCore.Mvc.Internal
+@using Zadatak2.Views
+@model Zadatak2.Models.TodoViewModel
+
+<p>
+    <br />
+    <b>@Model.Text </b> &nbsp; @if ((bool)ViewData["rok"])
+                               {
+                                   <span style="color: red"> @Model.GetDaysLeft() </span>
+                               }<br />
+    @if (Model.Labele.Count != 0)
+    {
+        <span> Labele: </span>
+        foreach (var lab in Model.Labele)
+         {
+             <span > @lab.Value, </span>
+
+         }
+        <br/>
+    }
+        @ViewData["funkcija"]
+        <br/>
+        @if (ViewData["link"].Equals("Complete"))
+        {
+            <a asp-action="MarkAsCompleted" asp-route-itemId="@Model._Id">Mark as compleated</a>
+        }
+        else
+        {
+            <a asp-action="RemoveFromCompleted" asp-route-itemId="@Model._Id">Remove from completed</a>
+        }
+    
+
+
+
+</p>
